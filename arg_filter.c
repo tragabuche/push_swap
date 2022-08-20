@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:21:42 by mpascual          #+#    #+#             */
-/*   Updated: 2022/08/20 23:35:01 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/08/21 00:42:56 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	get_stack(char *arg, Stack *stack)
 		stack->A[i] = ft_atoi(nbrs[i]);
 		i++;
 	}
-	//stack->A[i] = NULL;
 	if (find_duplicate(stack->A))
 	{
 		error_msg(1);
@@ -60,13 +59,16 @@ int	find_duplicate(int	*stack)
 
 	i = 0;
 	j = 0;
-	while (stack[i])
+	while (stack[i] && stack[i + 1])
 	{
-		j = i;
+		j = i + 1;
+		ft_printf("i=%i j=%i\n", i, j);
 		while (stack[i] != stack[j])
 			j++;
 		if (stack[i] == stack[j])
+		{
 			return (1);
+		}
 		i++;
 	}
 	return (0);

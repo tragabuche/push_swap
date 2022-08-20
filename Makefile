@@ -2,7 +2,8 @@
 
 NAME		= push_swap
 LIBFT_DIR	= ./libft
-LIBFT		= $(LIBFT_DIR)/libftprintf.a
+LIBFT		= libftprintf.a
+LIBFT_HEAD	= $(LIBFT_DIR)/header.h
 HEADER		= pushswap.h
 SRCS		= pushswap.c arg_filter.c
 
@@ -13,14 +14,14 @@ CFLAGS		= -Wall #-Wextra -Werror
 all: compile_libft $(NAME)
 
 $(NAME): $(OBJS) $(HEADER)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME) $(OBJS) -L $(LIBFT)
+	$(CC) $(CFLAGS) $(SRCS) -o $(NAME) $(OBJS) -L $(LIBFT_DIR) $(LIBFT_DIR)/$(LIBFT)
 
 compile_libft:
 	cd $(LIBFT_DIR) && make
 
 clean:
 	rm -rf $(OBJS)
-	cd $(LIBFT_DIR) && make clean
+	cd $(LIBFT_DIR) && make fclean
 
 fclean: clean
 	rm -rf $(NAME)
