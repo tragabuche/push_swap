@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:31:04 by mpascual          #+#    #+#             */
-/*   Updated: 2022/08/21 00:37:35 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/08/21 18:56:38 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@
 
 #include "pushswap.h"
 
-int	is_sorted(int *stack)
+int	is_sorted(Stack *stack)
 {
 	int i;
 
 	i = 0;
-	while (stack[i] && stack[i + 1])
+	while (i < stack->len - 1)
 	{
-		if (stack[i] > stack[i + 1])
-			return (1);
+		if (stack->A[i] > stack->A[i + 1])
+			return (0);
 		else
 			i++;
 	}
-	return (0);
+	return (1);
 }
 
 int main(int argc, char **argv)
@@ -46,10 +46,7 @@ int main(int argc, char **argv)
 	if (stack == NULL)
 		return (error_msg(2));
 	get_stack(argv[1], stack);
-	if (is_sorted(stack->A))
-	{
-		ft_putstr("Stack A is already sorted\n");
+	if (is_sorted(stack))
 		return (EXIT_SUCCESS);
-	}
 	return (EXIT_SUCCESS);
 }
