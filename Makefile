@@ -21,10 +21,11 @@ compile_libft:
 
 clean:
 	rm -rf $(OBJS)
-	cd $(LIBFT_DIR) && make fclean
+	cd $(LIBFT_DIR) && make clean
 
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf $(LIBFT_DIR)/$(LIBFT)
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:21:42 by mpascual          #+#    #+#             */
-/*   Updated: 2022/08/21 19:20:10 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/08/22 16:10:02 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	get_stack(char *arg, Stack *stack)
 ** (O = n^2 - n)
 ** This may not be the best solution...
 */
+
 int	find_duplicate(int *stack, int len)
 {
 	int i;
@@ -64,9 +65,9 @@ int	find_duplicate(int *stack, int len)
 	while (i < len)
 	{
 		j = i + 1;
-		while (stack[i] != stack[j] && j < len - 1)
+		while (stack[i] != stack[j] && j < len)
 			j++;
-		if (stack[i] == stack[j])
+		if (stack[i] == stack[j] && j != len)
 		{
 			return (1);
 		}

@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:31:04 by mpascual          #+#    #+#             */
-/*   Updated: 2022/08/21 18:56:38 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/08/22 15:47:40 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,13 @@ int main(int argc, char **argv)
 	get_stack(argv[1], stack);
 	if (is_sorted(stack))
 		return (EXIT_SUCCESS);
+	if (stack->len <= 5)
+	{
+		//small sort
+	}
+	else
+	{
+		//big sort
+	}
 	return (EXIT_SUCCESS);
 }
