@@ -6,13 +6,11 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:31:04 by mpascual          #+#    #+#             */
-/*   Updated: 2022/08/22 15:47:40 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/08/26 18:39:59 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
-* - Parse (copy arg into stack A if no errors are detected)						DONE
-* - Check if stack A is already sorted											DONE
 * - Check stack A size and call the apropiate function (small_sort for A < 5)
 *   (big_sort for everything else)
 * - //OPTIONAL// run diferent algorithms and implement the fastest
@@ -56,5 +54,6 @@ int main(int argc, char **argv)
 	{
 		//big sort
 	}
+	free(stack);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:21:42 by mpascual          #+#    #+#             */
-/*   Updated: 2022/08/22 16:10:02 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/08/27 20:19:47 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	init_stacks(int len, Stack *stack)
 {
-	stack->A = malloc(len * sizeof(int) + 1);
-	stack->B = malloc(len * sizeof(int) + 1);
+	stack->A = malloc(len * sizeof(int));
+	stack->B = malloc(len * sizeof(int));
 	stack->len = len;
 	if (stack->A == NULL || stack->B == NULL)
 	{
@@ -36,16 +36,19 @@ void	get_stack(char *arg, Stack *stack)
 	while (nbrs[stack_len] != NULL)
 		stack_len++;
 	init_stacks(stack_len, stack);
-
-	while (nbrs[i])
+	if (stack_len > 1)
 	{
-		stack->A[i] = ft_atoi(nbrs[i]);
-		i++;
-	}
-	if (find_duplicate(stack->A, stack_len))
-	{
-		error_msg(1);
-		exit(EXIT_FAILURE);
+		while (nbrs[i])
+		{
+			stack->A[i] = ft_atoi(nbrs[i]);
+			i++;
+		}
+		if (find_duplicate(stack->A, stack_len))
+		{
+			error_msg(1);
+			exit(EXIT_FAILURE);
+		}
+		i = 0;
 	}
 }
 
@@ -68,9 +71,7 @@ int	find_duplicate(int *stack, int len)
 		while (stack[i] != stack[j] && j < len)
 			j++;
 		if (stack[i] == stack[j] && j != len)
-		{
 			return (1);
-		}
 		i++;
 	}
 	return (0);
