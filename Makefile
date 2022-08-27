@@ -5,7 +5,7 @@ LIBFT_DIR	= ./libft
 LIBFT		= libftprintf.a
 LIBFT_HEAD	= $(LIBFT_DIR)/header.h
 HEADER		= pushswap.h
-SRCS		= pushswap.c arg_filter.c
+SRCS		= pushswap.c arg_filter.c instructions.c
 
 OBJS		= $(SRC:.c=.o)
 CC			= gcc

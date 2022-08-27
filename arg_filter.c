@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:21:42 by mpascual          #+#    #+#             */
-/*   Updated: 2022/08/27 12:08:06 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/08/28 00:23:49 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void	init_stacks(int len, Stack *stack)
 {
-	stack->A = malloc(len * sizeof(int) + 1);
-	stack->B = malloc(len * sizeof(int) + 1);
-	stack->len = len;
+	stack->A = malloc(len * sizeof(int));
+	stack->B = malloc(len * sizeof(int));
+	stack->lenA = len;
+	stack->lenB = 0;
 	if (stack->A == NULL || stack->B == NULL)
 	{
 		error_msg(2);
@@ -36,16 +37,19 @@ void	get_stack(char *arg, Stack *stack)
 	while (nbrs[stack_len] != NULL)
 		stack_len++;
 	init_stacks(stack_len, stack);
-
-	while (nbrs[i])
+	if (stack_len > 1)
 	{
-		stack->A[i] = ft_atoi(nbrs[i]);
-		i++;
-	}
-	if (find_duplicate(stack->A, stack_len))
-	{
-		error_msg(1);
-		exit(EXIT_FAILURE);
+		while (nbrs[i])
+		{
+			stack->A[i] = ft_atoi(nbrs[i]);
+			i++;
+		}
+		if (find_duplicate(stack->A, stack_len))
+		{
+			error_msg(1);
+			exit(EXIT_FAILURE);
+		}
+		i = 0;
 	}
 }
 
@@ -54,6 +58,7 @@ void	get_stack(char *arg, Stack *stack)
 ** (O = n^2 - n)
 ** This may not be the best solution...
 */
+
 int	find_duplicate(int *stack, int len)
 {
 	int i;
@@ -67,10 +72,7 @@ int	find_duplicate(int *stack, int len)
 		while (stack[i] != stack[j] && j < len)
 			j++;
 		if (stack[i] == stack[j] && j != len)
-		{
-			ft_printf("stack[%i]=%i == stack[%i]=%i", i, stack[i], j, stack[j]);
 			return (1);
-		}
 		i++;
 	}
 	return (0);
