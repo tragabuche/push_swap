@@ -9,7 +9,7 @@ SRCS		= pushswap.c arg_filter.c
 
 OBJS		= $(SRC:.c=.o)
 CC			= gcc
-CFLAGS		= -Wall #-Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror
 
 all: compile_libft $(NAME)
 
@@ -21,10 +21,11 @@ compile_libft:
 
 clean:
 	rm -rf $(OBJS)
-	cd $(LIBFT_DIR) && make fclean
+	cd $(LIBFT_DIR) && make clean
 
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf $(LIBFT_DIR)/$(LIBFT)
 
 re: fclean all
 

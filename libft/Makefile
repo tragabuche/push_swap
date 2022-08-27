@@ -6,7 +6,7 @@
 #    By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/14 17:01:42 by mpascual          #+#    #+#              #
-#    Updated: 2020/10/06 16:52:08 by mpascual         ###   ########.fr        #
+#    Updated: 2022/08/27 12:10:31 by mpascual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,10 +33,11 @@ all: $(NAME)
 
 clean:
 	rm -rf $(OBJS)
-	cd libft && make fclean
+	cd libft && make clean
 
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf libft/libft.a
 
 re: fclean all
 
