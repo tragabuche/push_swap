@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:21:42 by mpascual          #+#    #+#             */
-/*   Updated: 2022/08/27 20:19:47 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/08/28 00:23:49 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	init_stacks(int len, Stack *stack)
 {
 	stack->A = malloc(len * sizeof(int));
 	stack->B = malloc(len * sizeof(int));
-	stack->len = len;
+	stack->lenA = len;
+	stack->lenB = 0;
 	if (stack->A == NULL || stack->B == NULL)
 	{
 		error_msg(2);
