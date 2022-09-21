@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 14:30:22 by mpascual          #+#    #+#             */
-/*   Updated: 2022/08/28 00:23:28 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/08/30 16:57:27 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int		error_msg(int	flag);
 void	swap_a(Stack *stack);
 void	swap_b(Stack *stack);
 void	swap_both(Stack *stack);
-void	push_a(Stack *stack);
-void	push_b(Stack *stack);
+int		push_a(Stack *stack);
+int		push_b(Stack *stack);
 void	rotate_a(Stack *stack);
 void	rotate_b(Stack *stack);
 void	rotate_both(Stack *stack);

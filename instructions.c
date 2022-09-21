@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 20:13:08 by mpascual          #+#    #+#             */
-/*   Updated: 2022/08/28 00:30:39 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/18 13:46:50 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,12 @@ void	swap_both(Stack *stack)
 	ft_putstr("ss\n");
 }
 
-void	push_a(Stack *stack)
+int		push_a(Stack *stack)
 {
 	int i;
 
 	if (stack->lenB == 0)
-		return;
+		return (0);
 	i = stack->lenA;
 	while (i < 0)
 	{
@@ -60,14 +60,15 @@ void	push_a(Stack *stack)
 	stack->lenB--;
 	stack->lenA++;
 	ft_putstr("pa\n");
+	return (1);
 }
 
-void	push_b(Stack *stack)
+int	push_b(Stack *stack)
 {
 	int i;
 
 	if (stack->lenA == 0)
-		return;
+		return (0);
 	i = stack->lenB;
 	while (i < 0)
 	{
@@ -83,6 +84,7 @@ void	push_b(Stack *stack)
 	stack->lenA--;
 	stack->lenB++;
 	ft_putstr("pb\n");
+	return (1);
 }
 
 void	rotate_a(Stack *stack)

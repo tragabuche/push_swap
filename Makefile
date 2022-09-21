@@ -7,29 +7,32 @@ LIBFT_HEAD	= $(LIBFT_DIR)/header.h
 HEADER		= pushswap.h
 SRCS		= pushswap.c arg_filter.c instructions.c
 
-OBJS		= $(SRC:.c=.o)
+OBJS		= $(SRCS:%.c=%.o)
 CC			= gcc
-CFLAGS		= -Wall #-Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror
 
 all: compile_libft $(NAME)
 
 $(NAME): $(OBJS) $(HEADER)
-	$(CC) $(CFLAGS) $(SRCS) -o $(NAME) $(OBJS) -L $(LIBFT_DIR) $(LIBFT_DIR)/$(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -L $(LIBFT_DIR) $(LIBFT_DIR)/$(LIBFT)
 
 compile_libft:
 	cd $(LIBFT_DIR) && make
 
 clean:
-	rm -rf $(OBJS)
+	rm -f $(OBJS)
 	cd $(LIBFT_DIR) && make clean
 
 fclean: clean
-	rm -rf $(NAME)
-	rm -rf $(LIBFT_DIR)/$(LIBFT)
+	rm -f $(NAME)
+	rm -f $(LIBFT_DIR)/$(LIBFT)
 
 re: fclean all
 
 norme: clean
-	@norminette $(SRC)
+	@norminette $(SRCS)
+
+leaks: $(NAME) clean
+	@leaks $(NAME)
 
 .PHONY: all clean fclean re
