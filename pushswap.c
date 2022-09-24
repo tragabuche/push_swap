@@ -6,19 +6,18 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:31:04 by mpascual          #+#    #+#             */
-/*   Updated: 2022/09/21 17:30:20 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/24 18:23:28 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// PLEASE THIS HAS TO APPEAR IN BOTH REPOS
 
 /*
 ** TO DO:
 ** small_sort():
-**		make sure stackA can accomodate the 2 numbers from stackB before pushing
-**		them back to stackA
+**		Figure out the logic for stacks of size > 3 && <= 5
 ** push_a/b():
 **		check memory access (some values might be overwritten)
+** Simpliify_numbers()
+** Radix_sort()
 */
 
 #include "pushswap.h"
@@ -69,26 +68,8 @@ void	small_sort(Stack *stack)
 		sort_3(stack);
 	else
 	{
-		push_b(stack);							//push_b
-		ft_putstr("Stack->A=");
-		while (i < stack->lenA)
-			ft_printf("%i ", stack->A[i++]);
-		ft_putchar('\n');
-		i = 0;
-		ft_putstr("Stack->B=");
-		while (i < stack->lenB)
-			ft_printf("%i ", stack->B[i++]);
-		ft_putchar('\n');
-		push_b(stack);							//push_b
-		ft_putstr("Stack->A=");
-		while (i < stack->lenA)
-			ft_printf("%i ", stack->A[i++]);
-		ft_putchar('\n');
-		i = 0;
-		ft_putstr("Stack->B=");
-		while (i < stack->lenB)
-			ft_printf("%i ", stack->B[i++]);
-		ft_putchar('\n');
+		push_b(stack);
+		push_b(stack);
 		sort_3(stack);
 		if (stack->B[0] < stack->A[0])
 			push_a(stack);

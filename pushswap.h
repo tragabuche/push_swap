@@ -6,13 +6,13 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 14:30:22 by mpascual          #+#    #+#             */
-/*   Updated: 2022/08/30 16:57:27 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/24 19:28:49 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
-# include "libft/header.h"
+# include "libftprintf/header.h"
 
 typedef struct Stack {
 	int	*A;
@@ -28,7 +28,6 @@ int		is_sorted(Stack *stack);
 int		sort_3(Stack *stack);
 void	small_sort(Stack *stack);
 int		error_msg(int	flag);
-
 void	swap_a(Stack *stack);
 void	swap_b(Stack *stack);
 void	swap_both(Stack *stack);
@@ -40,4 +39,9 @@ void	rotate_both(Stack *stack);
 void	reverse_rotate_a(Stack *stack);
 void	reverse_rotate_b(Stack *stack);
 void	reverse_rotate_both(Stack *stack);
+
+/*
+** DEBUG
+*/
+void	print_stack(Stack *stack, int A);
 #endif

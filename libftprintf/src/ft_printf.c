@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 17:17:37 by mpascual          #+#    #+#             */
-/*   Updated: 2020/11/14 18:02:44 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/24 20:00:26 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int			get_precision(const char *format, va_list arg, t_var *var)
 				i++;
 		}
 	}
-	var->is_precision = TRUE;
+	var->is_precision = true;
 	if (var->precision < 0)
-		var->is_precision = FALSE;
+		var->is_precision = false;
 	return (i);
 }
 
@@ -49,7 +49,7 @@ int			digit_flags(const char *format, t_var *var)
 		if (*format == '0')
 		{
 			if (!var->minus)
-				var->zero = TRUE;
+				var->zero = true;
 			format++;
 			i++;
 		}
@@ -100,9 +100,9 @@ void		check_type(const char c, va_list arg, t_var *var)
 	else if (c == 'p')
 		print_p(va_arg(arg, unsigned long), var);
 	else if (c == 'x')
-		print_x(va_arg(arg, unsigned int), FALSE, var);
+		print_x(va_arg(arg, unsigned int), false, var);
 	else if (c == 'X')
-		print_x(va_arg(arg, unsigned int), TRUE, var);
+		print_x(va_arg(arg, unsigned int), true, var);
 	else if (c == '%')
 		var->printed_chars += print_c('%', var);
 }

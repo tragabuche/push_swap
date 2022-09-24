@@ -6,13 +6,13 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 18:33:01 by mpascual          #+#    #+#             */
-/*   Updated: 2020/11/13 04:53:50 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/24 20:03:15 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-int		put_x(unsigned int nb, int len, t_bool mayus, t_var *var)
+int		put_x(unsigned int nb, int len, bool mayus, t_var *var)
 {
 	if (var->is_precision && var->precision == 0)
 		return (0);
@@ -25,7 +25,7 @@ int		put_x(unsigned int nb, int len, t_bool mayus, t_var *var)
 	return (0);
 }
 
-void	print_x(unsigned int nb, t_bool mayus, t_var *var)
+void	print_x(unsigned int nb, bool mayus, t_var *var)
 {
 	int		len;
 	int		pre_printed;
@@ -42,7 +42,7 @@ void	print_x(unsigned int nb, t_bool mayus, t_var *var)
 			var->printed_chars += ft_putchar(' ');
 		var->width--;
 	}
-	if (var->minus == FALSE)
+	if (var->minus == false)
 		put_x(nb, len, mayus, var);
 }
 
@@ -54,7 +54,7 @@ void	print_p(unsigned long nb, t_var *var)
 	if (var->minus)
 	{
 		var->printed_chars += ft_putstr("0x");
-		ft_itohex(nb, FALSE, var);
+		ft_itohex(nb, false, var);
 	}
 	while (var->width > len)
 	{
@@ -64,9 +64,9 @@ void	print_p(unsigned long nb, t_var *var)
 			var->printed_chars += ft_putchar(' ');
 		var->width--;
 	}
-	if (var->minus == FALSE)
+	if (var->minus == false)
 	{
 		var->printed_chars += ft_putstr("0x");
-		ft_itohex(nb, FALSE, var);
+		ft_itohex(nb, false, var);
 	}
 }

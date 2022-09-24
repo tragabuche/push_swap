@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/15 18:30:11 by mpascual          #+#    #+#             */
-/*   Updated: 2020/11/13 03:17:24 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/24 20:03:41 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void			print_u(unsigned int nb, t_var *var)
 			var->printed_chars += ft_putchar(' ');
 		var->width--;
 	}
-	if (var->minus == FALSE)
+	if (var->minus == false)
 		put_u(nb, len, var);
 }
 
@@ -54,8 +54,8 @@ int				minus(t_var *var)
 	int	i;
 
 	i = 1;
-	var->zero = FALSE;
-	var->minus = TRUE;
+	var->zero = false;
+	var->minus = true;
 	return (i);
 }
 

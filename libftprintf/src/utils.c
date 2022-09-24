@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 17:03:06 by mpascual          #+#    #+#             */
-/*   Updated: 2020/11/15 20:26:42 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/24 20:01:23 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void		init_flags(t_var *var)
 	var->precision = 0;
 	var->width = 0;
 	var->format_pos = 0;
-	var->minus = FALSE;
-	var->zero = FALSE;
-	var->is_precision = FALSE;
-	var->nb_neg = FALSE;
+	var->minus = false;
+	var->zero = false;
+	var->is_precision = false;
+	var->nb_neg = false;
 }
 
 int			star(t_var *var, va_list arg)
@@ -77,7 +77,7 @@ int			get_number(const char *str)
 ** characters of the hex number are mayus
 */
 
-void		ft_itohex(unsigned long nb, t_bool mayus, t_var *var)
+void		ft_itohex(unsigned long nb, bool mayus, t_var *var)
 {
 	unsigned long	num;
 	int				a;
@@ -93,3 +93,6 @@ void		ft_itohex(unsigned long nb, t_bool mayus, t_var *var)
 	else
 		var->printed_chars += ft_putchar(num + (num % 16 > 9 ? a : '0'));
 }
+
+
+

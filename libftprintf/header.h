@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/14 17:00:09 by mpascual          #+#    #+#             */
-/*   Updated: 2020/11/13 04:52:05 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/24 19:56:24 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ typedef struct		s_var
 	int				width;
 	int				precision;
 	unsigned int	format_pos;
-	t_bool			zero;
-	t_bool			minus;
-	t_bool			is_precision;
-	t_bool			nb_neg;
+	bool			zero;
+	bool			minus;
+	bool			is_precision;
+	bool			nb_neg;
 }					t_var;
 
 int					ft_printf(const char *format, ...);
@@ -38,8 +38,8 @@ int					print_s(char *str, t_var *var);
 void				print_di(int nb, t_var *var);
 void				print_u(unsigned int nb, t_var *var);
 void				print_p(unsigned long ptr, t_var *var);
-void				print_x(unsigned int nb, t_bool mayus, t_var *var);
-void				ft_itohex(unsigned long nb, t_bool mayus, t_var *var);
+void				print_x(unsigned int nb, bool mayus, t_var *var);
+void				ft_itohex(unsigned long nb, bool mayus, t_var *var);
 int					get_number(const char *str);
 int					get_precision(const char *format, va_list arg, t_var *var);
 int					minus(t_var *var);
