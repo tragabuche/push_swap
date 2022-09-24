@@ -6,7 +6,7 @@
 #    By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/13 20:46:54 by mpascual          #+#    #+#              #
-#    Updated: 2022/09/24 20:21:20 by mpascual         ###   ########.fr        #
+#    Updated: 2022/09/24 22:05:52 by mpascual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,10 @@ SRC_FILES	= ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 			  ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c \
 			  ft_putchar.c ft_putstr.c \
 			  ft_itoa.c ft_nbrlen.c ft_putnbr.c get_next_line.c
-BONUS_SRC	= $(SRC_FILES) $(wildcard *_bonus.c)
+BONUS_SRC	= $(SRC_FILES) ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c \
+			  ft_lstclear_bonus.c ft_lstdelone_bonus.c ft_lstiter_bonus.c \
+			  ft_lstlast_bonus.c ft_lstmap_bonus.c ft_lstnew_bonus.c \
+			  ft_lstsize_bonus.c
 HEADER		= libft.h
 
 ifdef WITH_BONUS
@@ -60,6 +63,7 @@ bonus :
 
 clean:
 	rm -f $(OBJ)
+	rm -f $(subst .c,.o,$(BONUS_SRC))
 
 fclean: clean
 	rm -f $(NAME)
