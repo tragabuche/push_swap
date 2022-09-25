@@ -6,7 +6,7 @@
 #    By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/24 18:51:54 by mpascual          #+#    #+#              #
-#    Updated: 2022/09/24 19:29:19 by mpascual         ###   ########.fr        #
+#    Updated: 2022/09/25 12:18:45 by mpascual         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ CYAN 		:= \033[1;36m
 
 # Global Config
 NAME		= push_swap
-LIBFT_DIR	= ./libftprintf
-LIBFT		= libftprintf.a
+LIBFT_DIR	= ./libft
+LIBFT		= libft.a
 LIBFT_HEAD	= $(LIBFT_DIR)/header.h
 HEADER		= pushswap.h
 SRC_FILES	= pushswap.c arg_filter.c instructions.c debug.c
@@ -45,11 +45,11 @@ $(NAME): $(OBJS) $(HEADER)
 	@echo "$(GREEN)$(NAME) created ✓${CLR_RMV}"
 
 compile_libft:
-	cd $(LIBFT_DIR) && make
+	cd $(LIBFT_DIR) && $(MAKE)
 
 clean:
 	rm -f $(OBJS)
-	cd $(LIBFT_DIR) && make clean
+	cd $(LIBFT_DIR) && $(MAKE) clean
 
 fclean: clean
 	rm -f $(NAME)

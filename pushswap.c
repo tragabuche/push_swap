@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:31:04 by mpascual          #+#    #+#             */
-/*   Updated: 2022/09/24 18:23:28 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/25 12:16:26 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,6 @@ int	sort_3(Stack *stack)
 
 void	small_sort(Stack *stack)
 {
-	int i;
-
-	i = 0;
 	if (stack->lenA == 2)
 	{
 		if (stack->A[0] > stack->A[1])

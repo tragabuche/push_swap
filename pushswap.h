@@ -6,13 +6,13 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 14:30:22 by mpascual          #+#    #+#             */
-/*   Updated: 2022/09/24 19:28:49 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/25 12:15:25 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSHSWAP_H
 # define PUSHSWAP_H
-# include "libftprintf/header.h"
+# include "libft/libft.h"
 
 typedef struct Stack {
 	int	*A;
