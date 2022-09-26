@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:31:04 by mpascual          #+#    #+#             */
-/*   Updated: 2022/09/25 12:16:26 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:42:59 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	is_sorted(Stack *stack)
 	}
 	return (1);
 }
+
 int	sort_3(Stack *stack)
 {
 	if (stack->A[0] < stack->A[1] && stack->A[1] < stack->A[2])
@@ -67,34 +68,18 @@ void	small_sort(Stack *stack)
 	{
 		push_b(stack);
 		push_b(stack);
+		//print_stack(stack);
 		sort_3(stack);
-		if (stack->B[0] < stack->A[0])
-			push_a(stack);
-		else if (stack->B[1] > stack->A[0])
-		{
-			swap_b(stack);
-			push_a(stack);
-		}
-		else if (stack->B[0] > stack->A[stack->lenA])
-		{
-			push_a(stack);
-			rotate_a(stack);
-		}
-		else if (stack->B[1] > stack->A[stack->lenA])
-		{
-			swap_b(stack);
-			push_a(stack);
-			rotate_a(stack);
-		}
-		else
-			ft_putstr("Fucked\n");
+		//print_stack(stack);
 		push_a(stack);
+		push_a(stack);
+		//print_stack(stack);
+		rotate_a(stack);
 	}
 }
 
 int main(int argc, char **argv)
 {
-	int i = 0;
 	Stack *stack;
 
 	if (argc != 2)
@@ -112,11 +97,9 @@ int main(int argc, char **argv)
 		small_sort(stack);
 	else
 	{
-		ft_printf("caca\n");
+		ft_printf(">5 no pls :(\n");
 	}
-	while (i < stack->lenA)
-		ft_printf("%i ", stack->A[i++]);
-	ft_putchar('\n');
+	print_stack(stack);
 	free(stack);
 	return (EXIT_SUCCESS);
 }

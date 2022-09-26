@@ -6,34 +6,29 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 18:23:56 by mpascual          #+#    #+#             */
-/*   Updated: 2022/09/24 18:26:58 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:39:56 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
 /*
-** This file will compile only when DEBUG mode is set in Makefile config.
-** It contains functions only relevant for debuggin
+** This file contais functions only relevant for debuging
+** DELETE BEFORE __SET AS FINISHED__
 */
 
-void	print_stack(Stack *stack, int A)
+void	print_stack(Stack *stack)
 {
 	int i;
 
 	i = 0;
-	if (A)
-	{
-		ft_putstr("Stack->A=");
-		while (i < stack->lenA)
-			ft_printf("%i ", stack->A[i++]);
-		ft_putchar('\n');
-	}
-	else
-	{
-		ft_putstr("Stack->B=");
-		while (i < stack->lenB)
-			ft_printf("%i ", stack->B[i++]);
-		ft_putchar('\n');
-	}
+	ft_putstr("Stack->A=");
+	while (i < stack->lenA)
+		ft_printf("%i ", stack->A[i++]);
+	ft_putchar('\n');
+	i = 0;
+	ft_putstr("Stack->B=");
+	while (i < stack->lenB)
+		ft_printf("%i ", stack->B[i++]);
+	ft_putchar('\n');
 }

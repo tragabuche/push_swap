@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 20:13:08 by mpascual          #+#    #+#             */
-/*   Updated: 2022/09/18 13:46:50 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/26 17:37:07 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		push_a(Stack *stack)
 	if (stack->lenB == 0)
 		return (0);
 	i = stack->lenA;
-	while (i < 0)
+	while (i > 0)
 	{
 		stack->A[i] = stack->A[i - 1];
 		i--;
@@ -70,7 +70,7 @@ int	push_b(Stack *stack)
 	if (stack->lenA == 0)
 		return (0);
 	i = stack->lenB;
-	while (i < 0)
+	while (i > 0)
 	{
 		stack->B[i] = stack->B[i - 1];
 		i--;
