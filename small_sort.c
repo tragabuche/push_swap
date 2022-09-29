@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 18:52:07 by mpascual          #+#    #+#             */
-/*   Updated: 2022/09/28 19:50:20 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/09/29 13:31:04 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,6 @@ int	find_smallest(int *stack, int len)
 
 void	small_sort(Stack *stack)
 {
-	int i;
-
-	i = 0;
 	if (stack->lenA == 2)
 	{
 		if (stack->A[0] > stack->A[1])
