@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:31:04 by mpascual          #+#    #+#             */
-/*   Updated: 2022/09/28 19:44:52 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/10/09 22:29:59 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,45 +20,56 @@
 
 #include "pushswap.h"
 
-int	is_sorted(Stack *stack)
+int	simplify(Stack *stack)
 {
 	int i;
+	int *distances;
 
 	i = 0;
-	while (i < stack->lenA - 1)
+	distances = malloc(stack->lenA * sizeof(int));
+	if (distances == NULL)
+		error_exit();
+	while (i < stack->lenA)
+		distances[i++] = 0;
+	i = 0;
+	while (i < stack->lenA)
 	{
-		if (stack->A[i] > stack->A[i + 1])
-			return (0);
-		else
-			i++;
+		distances[i] = find_smallest_mod(&stack->A[i], distances, stack->lenA);
+		i++;
 	}
-	return (1);
+	i = 0;
+	ft_putstr("distances=");
+	while (i < stack->lenA)
+		ft_printf("%i ", distances[i++]);
+	while (i < stack->lenA)
+	{
+		stack->A[distances[i]] = i;
+		i++;
+	}
+	free (distances);
+	return (EXIT_SUCCESS);
 }
 
 int main(int argc, char **argv)
 {
 	Stack *stack;
 
-	if (argc != 2)
-		return (error_msg(1));
 	stack = malloc(sizeof(Stack));
 	if (stack == NULL)
-		return (error_msg(2));
-	get_stack(argv[1], stack);
-	if (is_sorted(stack))
+		error_exit();
+	get_stack(argc, argv, stack);
+	if (!is_sorted(stack))
 	{
-		free(stack);
-		return (EXIT_SUCCESS);
+		if (stack->lenA <= 5)
+			small_sort(stack);
+		else
+		{
+			simplify(stack);
+			print_stack(stack);
+		}
 	}
-	if (stack->lenA <= 5)
-		small_sort(stack);
-	else
-	{
-		ft_printf(">5 no pls :(\n");
-	}
-	print_stack(stack);
-	free(stack->B);
-	free(stack->A);
+	//print_stack(stack);
+	free(stack);
 	//system("leaks push_swap");
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 14:30:22 by mpascual          #+#    #+#             */
-/*   Updated: 2022/09/28 19:44:09 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/10/09 22:20:59 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct Stack {
 } Stack;
 
 void	init_stacks(int len, Stack *stack);
-void	get_stack(char *arg, Stack *stack);
+void	get_stack(int argc, char **argv, Stack *stack);
 int	find_duplicate(int *stack, int len);
 int	is_sorted(Stack *stack);
 int	sort_3(Stack *stack);
@@ -30,7 +30,9 @@ void	sort_4(Stack *stack);
 void	sort_5(Stack *stack);
 void	small_sort(Stack *stack);
 int	find_smallest(int *stack, int len);
-int	error_msg(int	flag);
+int	find_smallest_mod(int *stack, int *distarr, int len);
+int	simplify(Stack *stack);
+void	error_exit(void);
 void	swap_a(Stack *stack);
 void	swap_b(Stack *stack);
 void	swap_both(Stack *stack);
