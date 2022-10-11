@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:14:13 by mpascual          #+#    #+#             */
-/*   Updated: 2022/10/11 18:32:43 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/10/11 22:03:49 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	find_smallest_mod(int *stack, int *distarr, int len)
 	{
 		if (stack[i] < min && find_in(distarr, i, len))
 		{
-				min = stack[i];
-				distance = i;
+			min = stack[i];
+			distance = i;
 		}
 		i++;
 	}
