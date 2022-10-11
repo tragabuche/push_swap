@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:21:42 by mpascual          #+#    #+#             */
-/*   Updated: 2022/10/09 22:25:11 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:26:20 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,10 @@ void	get_stack(int argc, char **argv, Stack *stack)
 	else
 	{
 		init_stacks(argc - 1, stack);
-		while (stack->lenA > 1 && i < argc)
+		while (stack->lenA > 1 && i < argc - 1)
 		{
 			stack->A[i] = ft_atoi(argv[i + 1]);
+			i++;
 		}
 	}
 	if (find_duplicate(stack->A, stack->lenA))

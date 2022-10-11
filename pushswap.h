@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 14:30:22 by mpascual          #+#    #+#             */
-/*   Updated: 2022/10/09 22:20:59 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:25:09 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	small_sort(Stack *stack);
 int	find_smallest(int *stack, int len);
 int	find_smallest_mod(int *stack, int *distarr, int len);
 int	simplify(Stack *stack);
+int	find_in(int *haystack, int needle, int len);
 void	error_exit(void);
 void	swap_a(Stack *stack);
 void	swap_b(Stack *stack);

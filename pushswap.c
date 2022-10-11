@@ -6,14 +6,12 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:31:04 by mpascual          #+#    #+#             */
-/*   Updated: 2022/10/09 22:29:59 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:35:12 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 ** TO DO:
-** small_sort():
-**		Figure out the logic for stacks of size > 3 && <= 5
 ** Simplify_numbers()
 ** Radix_sort()
 */
@@ -34,13 +32,10 @@ int	simplify(Stack *stack)
 	i = 0;
 	while (i < stack->lenA)
 	{
-		distances[i] = find_smallest_mod(&stack->A[i], distances, stack->lenA);
+		distances[i] = find_smallest_mod(stack->A, distances, stack->lenA);
 		i++;
 	}
 	i = 0;
-	ft_putstr("distances=");
-	while (i < stack->lenA)
-		ft_printf("%i ", distances[i++]);
 	while (i < stack->lenA)
 	{
 		stack->A[distances[i]] = i;
@@ -65,7 +60,6 @@ int main(int argc, char **argv)
 		else
 		{
 			simplify(stack);
-			print_stack(stack);
 		}
 	}
 	//print_stack(stack);

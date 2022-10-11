@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:14:13 by mpascual          #+#    #+#             */
-/*   Updated: 2022/10/09 22:15:47 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/10/11 18:32:43 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,20 @@ int	is_sorted(Stack *stack)
 	return (1);
 }
 
+int	find_in(int *haystack, int needle, int len)
+{
+	int i;
+
+	i = 0;
+	while (i < len)
+	{
+		if (haystack[i] == needle)
+			return (EXIT_SUCCESS);
+		i++;
+	}
+	return (EXIT_FAILURE);
+}
+
 int	find_smallest_mod(int *stack, int *distarr, int len)
 {
 	int i;
@@ -38,7 +52,7 @@ int	find_smallest_mod(int *stack, int *distarr, int len)
 	min = stack[i];
 	while (i < len)
 	{
-		if (stack[i] < min && distarr[i] == 0)
+		if (stack[i] < min && find_in(distarr, i, len))
 		{
 				min = stack[i];
 				distance = i;
