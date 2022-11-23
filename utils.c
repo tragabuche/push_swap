@@ -6,11 +6,18 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:14:13 by mpascual          #+#    #+#             */
-/*   Updated: 2022/10/11 22:03:49 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/11/07 13:32:36 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+void	memfree(Stack *stack)
+{
+	free(stack->B);
+	free(stack->A);
+	free(stack);
+}
 
 int	is_sorted(Stack *stack)
 {

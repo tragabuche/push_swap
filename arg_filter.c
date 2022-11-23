@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:21:42 by mpascual          #+#    #+#             */
-/*   Updated: 2022/10/11 18:26:20 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/11/07 13:49:17 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	init_stacks(int len, Stack *stack)
 
 void	get_stack(int argc, char **argv, Stack *stack)
 {
-	char **nbrs;
 	int	stack_len;
 	int	i;
 
@@ -32,7 +31,7 @@ void	get_stack(int argc, char **argv, Stack *stack)
 	if (argc == 2)
 	{
 		stack_len = 0;
-		nbrs = ft_split(argv[1], ' ');
+		char **nbrs = ft_split(argv[1], ' ');
 		while (nbrs[stack_len] != NULL)
 			stack_len++;
 		init_stacks(stack_len, stack);
@@ -41,6 +40,7 @@ void	get_stack(int argc, char **argv, Stack *stack)
 			stack->A[i] = ft_atoi(nbrs[i]);
 			i++;
 		}
+		free(nbrs);
 	}
 	else
 	{

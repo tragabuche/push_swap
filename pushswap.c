@@ -6,15 +6,9 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:31:04 by mpascual          #+#    #+#             */
-/*   Updated: 2022/10/11 22:04:17 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/11/23 20:55:09 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-** TO DO:
-** Simplify_numbers()
-** Radix_sort()
-*/
 
 #include "pushswap.h"
 
@@ -24,7 +18,7 @@ int	simplify(Stack *stack)
 	int *distances;
 
 	i = 0;
-	distances = malloc(stack->lenA * sizeof(int) - 1);
+	distances = malloc(stack->lenA * sizeof(int));
 	if (distances == NULL)
 		error_exit();
 	while (i < stack->lenA - 1)
@@ -51,6 +45,7 @@ void	radix_sort(Stack *stack)
 	int n_bits;
 	int i;
 	int j;
+	int nbr;
 
 	max_n = stack->lenA - 1;
 	n_bits = 0;
@@ -60,9 +55,9 @@ void	radix_sort(Stack *stack)
 	while (i < n_bits)
 	{
 		j = 0;
-		while (j < stack->lenA)
+		nbr = stack->lenA;
+		while (j < nbr)
 		{
-			//ft_printf("%i >> %i&1=%i\n", stack->A[0], i, (stack->A[0] >> i)&1);
 			if (((stack->A[0] >> i)&1) == 1)
 				rotate_a(stack);
 			else
@@ -90,14 +85,11 @@ int main(int argc, char **argv)
 		else
 		{
 			simplify(stack);
-			//print_stack(stack);
 			radix_sort(stack);
 		}
 	}
 	//print_stack(stack);
-	free(stack->B);
-	free(stack->A);
-	free(stack);
-	//system("leaks push_swap");
+	memfree(stack);
+	//system("leaks push_swap --quiet");
 	return (EXIT_SUCCESS);
 }
