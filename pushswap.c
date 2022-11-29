@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:31:04 by mpascual          #+#    #+#             */
-/*   Updated: 2022/11/23 20:55:09 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:18:22 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	radix_sort(Stack *stack)
 	int max_n;
 	int n_bits;
 	int i;
-	int j;
 	int nbr;
 
 	max_n = stack->lenA - 1;
@@ -54,15 +53,14 @@ void	radix_sort(Stack *stack)
 	i = 0;
 	while (i < n_bits)
 	{
-		j = 0;
 		nbr = stack->lenA;
-		while (j < nbr)
+		while (nbr)
 		{
 			if (((stack->A[0] >> i)&1) == 1)
 				rotate_a(stack);
 			else
 				push_b(stack);
-			j++;
+			nbr--;
 		}
 		while (stack->lenB)
 			push_a(stack);
@@ -85,6 +83,7 @@ int main(int argc, char **argv)
 		else
 		{
 			simplify(stack);
+			//print_stack(stack);
 			radix_sort(stack);
 		}
 	}

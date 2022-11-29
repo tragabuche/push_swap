@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 18:23:56 by mpascual          #+#    #+#             */
-/*   Updated: 2022/11/23 20:45:59 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/11/29 21:30:21 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,4 @@ void	print_stack(Stack *stack)
 	while (i < stack->lenB)
 		ft_printf("%i ", stack->B[i++]);
 	ft_putchar('\n');
-	ft_printf("len->A=%i\n", stack->lenA);
-	ft_printf("len->B=%i\n", stack->lenB);
 }

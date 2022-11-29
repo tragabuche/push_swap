@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:14:13 by mpascual          #+#    #+#             */
-/*   Updated: 2022/11/07 13:32:36 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/11/29 20:57:12 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	find_smallest_mod(int *stack, int *distarr, int len)
 
 void	error_exit(void)
 {
-	ft_putstr("Error\n");
+	ft_putstr_fd("Error\n", STDERR_FILENO);
+	//free cosas
 	exit(EXIT_FAILURE);	
 }

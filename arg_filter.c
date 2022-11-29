@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:21:42 by mpascual          #+#    #+#             */
-/*   Updated: 2022/11/07 13:49:17 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/11/29 21:54:32 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,32 +24,27 @@ void	init_stacks(int len, Stack *stack)
 
 void	get_stack(int argc, char **argv, Stack *stack)
 {
-	int	stack_len;
 	int	i;
+	int	j;
+	int	argv_len;
 
 	i = 0;
-	if (argc == 2)
+	init_stacks(argc - 1, stack);
+	while (stack->lenA > 1 && i < argc - 1)
 	{
-		stack_len = 0;
-		char **nbrs = ft_split(argv[1], ' ');
-		while (nbrs[stack_len] != NULL)
-			stack_len++;
-		init_stacks(stack_len, stack);
-		while (stack_len > 1 && nbrs[i])
+		j = 0;
+		argv_len = ft_strlen(argv[i + 1]);
+		while (j < argv_len)
 		{
-			stack->A[i] = ft_atoi(nbrs[i]);
-			i++;
+			if (j == 0 && (argv[i + 1][j] == '-' || argv[i + 1][j] == '+'))
+				j++;
+			if (ft_isdigit(argv[i + 1][j]))
+				j++;
+			else
+				error_exit();
 		}
-		free(nbrs);
-	}
-	else
-	{
-		init_stacks(argc - 1, stack);
-		while (stack->lenA > 1 && i < argc - 1)
-		{
-			stack->A[i] = ft_atoi(argv[i + 1]);
-			i++;
-		}
+		stack->A[i] = ft_atoi(argv[i + 1]);
+		i++;
 	}
 	if (find_duplicate(stack->A, stack->lenA))
 		error_exit();
