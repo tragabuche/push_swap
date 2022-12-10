@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 21:21:42 by mpascual          #+#    #+#             */
-/*   Updated: 2022/11/29 21:54:32 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/12/10 21:49:00 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	init_stacks(int len, Stack *stack)
 {
-	stack->A = malloc(len * sizeof(int));
-	stack->B = malloc(len * sizeof(int));
-	stack->lenA = len;
-	stack->lenB = 0;
-	if (stack->A == NULL || stack->B == NULL)
-		error_exit();
+	stack->a = malloc(len * sizeof(int));
+	stack->b = malloc(len * sizeof(int));
+	stack->len_a = len;
+	stack->len_b = 0;
+	if (stack->a == NULL || stack->b == NULL)
+		error_exit(stack);
 }
 
 void	get_stack(int argc, char **argv, Stack *stack)
@@ -30,7 +30,7 @@ void	get_stack(int argc, char **argv, Stack *stack)
 
 	i = 0;
 	init_stacks(argc - 1, stack);
-	while (stack->lenA > 1 && i < argc - 1)
+	while (stack->len_a > 1 && i < argc - 1)
 	{
 		j = 0;
 		argv_len = ft_strlen(argv[i + 1]);
@@ -41,24 +41,18 @@ void	get_stack(int argc, char **argv, Stack *stack)
 			if (ft_isdigit(argv[i + 1][j]))
 				j++;
 			else
-				error_exit();
+				error_exit(stack);
 		}
-		stack->A[i] = ft_atoi(argv[i + 1]);
+		stack->a[i] = ft_atoi(argv[i + 1]);
 		i++;
 	}
-	if (find_duplicate(stack->A, stack->lenA))
-		error_exit();
+	if (find_duplicate(stack->a, stack->len_a))
+		error_exit(stack);
 }
-
-/*
-** Checking all elements of the array against any other element not previusly checked
-** (O = n^2 - n)??
-** This may not be the best solution...
-*/
 
 int	find_duplicate(int *stack, int len)
 {
-	int i;
+	int	i;
 	int	j;
 
 	i = 0;

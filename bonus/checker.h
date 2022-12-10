@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pushswap.h                                         :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 14:30:22 by mpascual          #+#    #+#             */
-/*   Updated: 2022/12/10 21:37:36 by mpascual         ###   ########.fr       */
+/*   Created: 2022/11/22 18:36:14 by mpascual          #+#    #+#             */
+/*   Updated: 2022/12/11 00:15:20 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H
-# include "libft/libft.h"
+#ifndef CHECKER_H
+# define CHECKER_H
+# include "../libft/libft.h"
 
 typedef struct Stack {
 	int	*a;
 	int	*b;
-	int	len_a;
+	int len_a;
 	int	len_b;
 }	Stack;
 
 void	init_stacks(int len, Stack *stack);
-void	get_stack(int argc, char **argv, Stack *stack);
-int		find_duplicate(int *stack, int len);
 int		is_sorted(Stack *stack);
-int		sort_3(Stack *stack);
-void	sort_4(Stack *stack);
-void	sort_5(Stack *stack);
-void	small_sort(Stack *stack);
-int		find_smallest(int *stack, int len);
-int		find_smallest_mod(int *stack, int *distarr, int len);
-int		simplify(Stack *stack);
-int		find_in(int *haystack, int needle, int len);
-void	memfree(Stack *stack);
-void	error_exit(Stack *stack);
 void	swap_a(Stack *stack);
 void	swap_b(Stack *stack);
 void	swap_both(Stack *stack);
@@ -46,8 +34,5 @@ void	rotate_both(Stack *stack);
 void	reverse_rotate_a(Stack *stack);
 void	reverse_rotate_b(Stack *stack);
 void	reverse_rotate_both(Stack *stack);
-/*
-** DEBUG
-*/
-void	print_stack(Stack *stack);
+
 #endif

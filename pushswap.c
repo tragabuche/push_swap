@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:31:04 by mpascual          #+#    #+#             */
-/*   Updated: 2022/11/29 20:18:22 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/12/10 23:48:47 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 int	simplify(Stack *stack)
 {
-	int i;
-	int *distances;
+	int	i;
+	int	*distances;
 
 	i = 0;
-	distances = malloc(stack->lenA * sizeof(int));
+	distances = malloc(stack->len_a * sizeof(int));
 	if (distances == NULL)
-		error_exit();
-	while (i < stack->lenA - 1)
+		error_exit(stack);
+	while (i < stack->len_a - 1)
 		distances[i++] = 0;
 	i = 0;
-	while (i < stack->lenA)
+	while (i < stack->len_a)
 	{
-		distances[i] = find_smallest_mod(stack->A, distances, stack->lenA);
+		distances[i] = find_smallest_mod(stack->a, distances, stack->len_a);
 		i++;
 	}
 	i = 0;
-	while (i < stack->lenA)
+	while (i < stack->len_a)
 	{
-		stack->A[distances[i]] = i;
+		stack->a[distances[i]] = i;
 		i++;
 	}
 	free (distances);
@@ -41,54 +41,52 @@ int	simplify(Stack *stack)
 
 void	radix_sort(Stack *stack)
 {
-	int max_n;
-	int n_bits;
-	int i;
-	int nbr;
+	int	max_n;
+	int	n_bits;
+	int	i;
+	int	nbr;
 
-	max_n = stack->lenA - 1;
+	max_n = stack->len_a - 1;
 	n_bits = 0;
 	while ((max_n >> n_bits) != 0)
 		n_bits++;
 	i = 0;
 	while (i < n_bits)
 	{
-		nbr = stack->lenA;
+		nbr = stack->len_a;
 		while (nbr)
 		{
-			if (((stack->A[0] >> i)&1) == 1)
+			if (((stack->a[0] >> i) & 1) == 1)
 				rotate_a(stack);
 			else
 				push_b(stack);
 			nbr--;
 		}
-		while (stack->lenB)
+		while (stack->len_b)
 			push_a(stack);
 		i++;
 	}
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	Stack *stack;
+	Stack	*stack;
 
 	stack = malloc(sizeof(Stack));
 	if (stack == NULL)
-		error_exit();
+		error_exit(stack);
 	get_stack(argc, argv, stack);
 	if (!is_sorted(stack))
 	{
-		if (stack->lenA <= 5)
+		if (stack->len_a <= 5)
 			small_sort(stack);
 		else
 		{
 			simplify(stack);
-			//print_stack(stack);
 			radix_sort(stack);
 		}
 	}
 	//print_stack(stack);
 	memfree(stack);
-	//system("leaks push_swap --quiet");
 	return (EXIT_SUCCESS);
 }

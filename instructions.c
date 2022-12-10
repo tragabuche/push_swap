@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 20:13:08 by mpascual          #+#    #+#             */
-/*   Updated: 2022/09/26 17:37:07 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/12/11 00:08:30 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	swap_a(Stack *stack)
 {
-	int tmp;
+	int	tmp;
 
-	tmp = stack->A[0];
-	stack->A[0] = stack->A[1];
-	stack->A[1] = tmp;
+	tmp = stack->a[0];
+	stack->a[0] = stack->a[1];
+	stack->a[1] = tmp;
 	ft_putstr("sa\n");
 }
 
 void	swap_b(Stack *stack)
 {
-	int tmp;
+	int	tmp;
 
-	tmp = stack->A[0];
-	stack->B[0] = stack->B[1];
-	stack->B[1] = tmp;
+	tmp = stack->a[0];
+	stack->b[0] = stack->b[1];
+	stack->b[1] = tmp;
 	ft_putstr("sb\n");
 }
 
@@ -39,83 +39,83 @@ void	swap_both(Stack *stack)
 	ft_putstr("ss\n");
 }
 
-int		push_a(Stack *stack)
+int	push_a(Stack *stack)
 {
-	int i;
+	int	i;
 
-	if (stack->lenB == 0)
+	if (stack->len_b == 0)
 		return (0);
-	i = stack->lenA;
+	i = stack->len_a;
 	while (i > 0)
 	{
-		stack->A[i] = stack->A[i - 1];
+		stack->a[i] = stack->a[i - 1];
 		i--;
 	}
-	stack->A[i] = stack->B[i]; //i should always be 0 here
-	while (i < stack->lenB - 1)
+	stack->a[i] = stack->b[i];
+	while (i < stack->len_b - 1)
 	{
-		stack->B[i] = stack->B[i + 1];
+		stack->b[i] = stack->b[i + 1];
 		i++;
 	}
-	stack->lenB--;
-	stack->lenA++;
+	stack->len_b--;
+	stack->len_a++;
 	ft_putstr("pa\n");
 	return (1);
 }
 
 int	push_b(Stack *stack)
 {
-	int i;
+	int	i;
 
-	if (stack->lenA == 0)
+	if (stack->len_a == 0)
 		return (0);
-	i = stack->lenB;
+	i = stack->len_b;
 	while (i > 0)
 	{
-		stack->B[i] = stack->B[i - 1];
+		stack->b[i] = stack->b[i - 1];
 		i--;
 	}
-	stack->B[i] = stack->A[i]; //i should always be 0 here
-	while (i < stack->lenA - 1)
+	stack->b[i] = stack->a[i];
+	while (i < stack->len_a - 1)
 	{
-		stack->A[i] = stack->A[i + 1];
+		stack->a[i] = stack->a[i + 1];
 		i++;
 	}
-	stack->lenA--;
-	stack->lenB++;
+	stack->len_a--;
+	stack->len_b++;
 	ft_putstr("pb\n");
 	return (1);
 }
 
 void	rotate_a(Stack *stack)
 {
-	int i;
-	int tmp;
+	int	i;
+	int	tmp;
 
 	i = 0;
-	tmp = stack->A[0];
-	while (i < stack->lenA - 1)
+	tmp = stack->a[0];
+	while (i < stack->len_a - 1)
 	{
-		stack->A[i] = stack->A[i + 1];
+		stack->a[i] = stack->a[i + 1];
 		i++;
 	}
-	stack->A[i] = tmp;
+	stack->a[i] = tmp;
 	ft_putstr("ra\n");
 }
 
 void	rotate_b(Stack *stack)
 {
-	int i;
-	int tmp;
+	int	i;
+	int	tmp;
 
 	i = 0;
-	tmp = stack->B[0];
-	while (i < stack->lenB - 1)
+	tmp = stack->b[0];
+	while (i < stack->len_b - 1)
 	{
-		stack->B[i] = stack->B[i + 1];
+		stack->b[i] = stack->b[i + 1];
 		i++;
 	}
-	stack->B[i] = tmp;
+	stack->b[i] = tmp;
 	ft_putstr("rb\n");
 }
 
@@ -128,33 +128,33 @@ void	rotate_both(Stack *stack)
 
 void	reverse_rotate_a(Stack *stack)
 {
-	int i;
-	int tmp;
+	int	i;
+	int	tmp;
 
-	i = stack->lenA - 1;
-	tmp = stack->A[i];
+	i = stack->len_a - 1;
+	tmp = stack->a[i];
 	while (i > 0)
 	{
-		stack->A[i] = stack->A[i - 1];
+		stack->a[i] = stack->a[i - 1];
 		i--;
 	}
-	stack->A[i] = tmp;
+	stack->a[i] = tmp;
 	ft_putstr("rra\n");
 }
 
 void	reverse_rotate_b(Stack *stack)
 {
-	int i;
-	int tmp;
+	int	i;
+	int	tmp;
 
-	i = stack->lenB - 1;
-	tmp = stack->B[i];
+	i = stack->len_b - 1;
+	tmp = stack->b[i];
 	while (i > 0)
 	{
-		stack->B[i] = stack->B[i - 1];
+		stack->b[i] = stack->b[i - 1];
 		i--;
 	}
-	stack->B[i] = tmp;
+	stack->b[i] = tmp;
 	ft_putstr("rrb\n");
 }
 

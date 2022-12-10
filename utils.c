@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 22:14:13 by mpascual          #+#    #+#             */
-/*   Updated: 2022/11/29 20:57:12 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/12/10 21:50:28 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	memfree(Stack *stack)
 {
-	free(stack->B);
-	free(stack->A);
+	free(stack->b);
+	free(stack->a);
 	free(stack);
 }
 
 int	is_sorted(Stack *stack)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (i < stack->lenA - 1)
+	while (i < stack->len_a - 1)
 	{
-		if (stack->A[i] > stack->A[i + 1])
+		if (stack->a[i] > stack->a[i + 1])
 			return (0);
 		else
 			i++;
@@ -36,7 +36,7 @@ int	is_sorted(Stack *stack)
 
 int	find_in(int *haystack, int needle, int len)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < len)
@@ -50,9 +50,9 @@ int	find_in(int *haystack, int needle, int len)
 
 int	find_smallest_mod(int *stack, int *distarr, int len)
 {
-	int i;
-	int min;
-	int distance;
+	int	i;
+	int	min;
+	int	distance;
 
 	i = 0;
 	distance = 0;
@@ -66,12 +66,12 @@ int	find_smallest_mod(int *stack, int *distarr, int len)
 		}
 		i++;
 	}
-	return(distance);
+	return (distance);
 }
 
-void	error_exit(void)
+void	error_exit(Stack *stack)
 {
 	ft_putstr_fd("Error\n", STDERR_FILENO);
-	//free cosas
-	exit(EXIT_FAILURE);	
+	memfree(stack);
+	exit(EXIT_FAILURE);
 }

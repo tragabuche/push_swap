@@ -6,7 +6,7 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 18:52:07 by mpascual          #+#    #+#             */
-/*   Updated: 2022/09/29 13:31:04 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/12/10 21:35:12 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	find_smallest(int *stack, int len)
 {
-	int i;
-	int min;
-	int distance;
+	int	i;
+	int	min;
+	int	distance;
 
 	i = 0;
 	distance = 0;
@@ -30,19 +30,19 @@ int	find_smallest(int *stack, int len)
 		}
 		i++;
 	}
-	return(distance);
+	return (distance);
 }
 
 void	small_sort(Stack *stack)
 {
-	if (stack->lenA == 2)
+	if (stack->len_a == 2)
 	{
-		if (stack->A[0] > stack->A[1])
+		if (stack->a[0] > stack->a[1])
 			swap_a(stack);
 	}
-	else if (stack->lenA == 3)
+	else if (stack->len_a == 3)
 		sort_3(stack);
-	else if (stack->lenA == 4)
+	else if (stack->len_a == 4)
 		sort_4(stack);
 	else
 		sort_5(stack);
@@ -50,13 +50,13 @@ void	small_sort(Stack *stack)
 
 int	sort_3(Stack *stack)
 {
-	if (stack->A[0] < stack->A[1] && stack->A[1] < stack->A[2])
-		return(EXIT_SUCCESS);
-	else if (stack->A[0] > stack->A[1] && stack->A[1] < stack->A[2]
-			&& stack->A[2] < stack->A[0])
+	if (stack->a[0] < stack->a[1] && stack->a[1] < stack->a[2])
+		return (EXIT_SUCCESS);
+	else if (stack->a[0] > stack->a[1] && stack->a[1] < stack->a[2]
+		&& stack->a[2] < stack->a[0])
 		rotate_a(stack);
-	else if (stack->A[0] < stack->A[1] && stack->A[1] > stack->A[2]
-			&& stack->A[2] < stack->A[0])
+	else if (stack->a[0] < stack->a[1] && stack->a[1] > stack->a[2]
+		&& stack->a[2] < stack->a[0])
 		reverse_rotate_a(stack);
 	else
 	{
@@ -68,9 +68,9 @@ int	sort_3(Stack *stack)
 
 void	sort_4(Stack *stack)
 {
-	int distance;
+	int	distance;
 
-	distance = find_smallest(stack->A, stack->lenA);
+	distance = find_smallest(stack->a, stack->len_a);
 	if (distance == 1)
 		swap_a(stack);
 	else if (distance == 2)
@@ -87,9 +87,9 @@ void	sort_4(Stack *stack)
 
 void	sort_5(Stack *stack)
 {
-	int distance;
+	int	distance;
 
-	distance = find_smallest(stack->A, stack->lenA);
+	distance = find_smallest(stack->a, stack->len_a);
 	if (distance == 1)
 		swap_a(stack);
 	else if (distance == 2)
