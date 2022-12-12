@@ -6,11 +6,16 @@
 /*   By: mpascual <mpascual@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 16:31:04 by mpascual          #+#    #+#             */
-/*   Updated: 2022/12/10 23:48:47 by mpascual         ###   ########.fr       */
+/*   Updated: 2022/12/12 17:50:05 by mpascual         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+/*
+** TO FIX:
+** simplify() Does not work reliably on a bigger scale
+*/
 
 int	simplify(Stack *stack)
 {
